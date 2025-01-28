@@ -1,5 +1,6 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 
+//token verification middleware
 const verifyToken = (req: any, res: any, next: any): void => {
     const authToken = req.headers.authorization;
 

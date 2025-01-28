@@ -1,6 +1,7 @@
 import mongoose, { Document, Schema , Types} from "mongoose";
 import Joi from "joi";
 
+//interface for Post modal
 interface IPost extends Document {
   title: string;
   description: string;
@@ -10,6 +11,7 @@ interface IPost extends Document {
   };
 }
 
+// creating the new schema in the data base using the defined interface and mongoose
 const PostSchema: Schema = new Schema(
   {
     title: {
@@ -41,6 +43,8 @@ const PostSchema: Schema = new Schema(
 
 const Post = mongoose.model<IPost>("Post", PostSchema);
 
+
+//function to validate the required inputs
 function validateCreatePost(obj: any) {
   const schema = Joi.object({
     title: Joi.string().trim().min(2).max(200).required(),
@@ -50,6 +54,7 @@ function validateCreatePost(obj: any) {
   return schema.validate(obj);
 }
 
+//function for the validation in the moment of update
 function validateUpdatePost(obj: any) {
   const schema = Joi.object({
     title: Joi.string().trim().min(2).max(200),

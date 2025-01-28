@@ -1,3 +1,4 @@
+// error middleware to check invalid and not found uri
 const notFound = (req: any, res: any, next: any): void => {
     const error = new Error(`Not found - ${req.originalUrl}`);
     res.status(404);

@@ -4,14 +4,17 @@ import { errorHandler, notFound } from "../middlewares/error";
 import cors from 'cors';
 
 require('dotenv').config();
+//calling the connection function
 connectDb();
 
 
 const app = express();
 
+//call json and cors middlewares
 app.use(express.json());
 app.use(cors());
 
+//call the routings 
 app.use("/api/auth", require('../routes/AuthRoute'));
 app.use("/api/post", require('../routes/PostRoute'));
 
